@@ -1,0 +1,63 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services
+
+# - My First Group:
+#     - My First Service:
+#         href: http://localhost/
+#         description: Homepage is awesome
+
+# - My Second Group:
+#     - My Second Service:
+#         href: http://localhost/
+#         description: Homepage is the best
+
+# - My Third Group:
+#     - My Third Service:
+#         href: http://localhost/
+#         description: Homepage is 😎
+
+- "{{HOMEPAGE_VAR_SECION_NAME}}" :
+    - Jellyfin:
+        icon: jellyfin.svg
+        href: http://homeserver:8096
+        description: Anime, Shows and Movies
+        widget:
+            type: jellyfin
+            url: http://192.168.1.14:8096
+            key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+            enableBlocks: true # optional, defaults to false
+            enableNowPlaying: true # optional, defaults to true
+            enableUser: true # optional, defaults to false
+            showEpisodeNumber: true # optional, defaults to false
+            expandOneStreamToTwoRows: false # optional, defaults to true
+
+    - Komga:
+        icon: komga.svg
+        href: http://homeserver:25600
+        description: Manga and comics
+        widget:
+            type: komga
+            url: http://192.168.1.14:25600 # docker has it's own localhost, so that cannot be used
+            username: red@test.com
+            password: red
+
+    - AudioBookShelf:
+        icon: audiobookshelf.svg
+        href: http://homeserver:13378
+        description: Books, Novels and AudioBooks
+        widget:
+            type: audiobookshelf
+            url: http://192.168.1.14:13378
+            key: "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_CANAAN_API_KEY}}"
+
+    - Navidrome:
+        icon: navidrome.svg
+        href: http://homeserver:4533
+        description: Music, Not every thing can be played by it tho . . . 
+        widget:
+            type: navidrome
+            url: http://192.168.1.14:4533
+            user: red
+            token: "{{HOMEPAGE_VAR_NAVIDROME_HASH}}"
+            salt: "{{HOMEPAGE_VAR_NAVIDROME_SALT}}"

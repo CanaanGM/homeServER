@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: root #TODO: find out how to change it 
+    ports:
+      - $JELYFIN_PORT:8096
+    volumes:
+      - ./jelly-config:/config
+      - ./jelly-cache:/cache
+      - type: bind
+        source: /home/red/external-drives/Anime/Anime
+        target: /media/Anime
+      - type: bind
+        source: /home/red/external-drives/Anime2/Anime
+        target: /media/Anime2
+      - type: bind
+        source: /home/red/external-drives/Anime/Movies
+        target: /media/movies
+      - type: bind
+        source: "/home/red/external-drives/Anime/Anime Music Videos"
+        target: /media/amvs
+      - type: bind
+        source: /home/red/external-drives/Anime/YouTubeRips
+        target: /media/youtube
+    restart: unless-stopped
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: $JELLYFIN_MEMORY
+
+volumes:
+  jelly-config:
+  jelly-cache:

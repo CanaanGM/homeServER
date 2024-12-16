@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  komga:
+      image: gotson/komga
+      container_name: komga
+      volumes:
+        - type: bind
+          source: ./komga_config
+          target: /config
+        - type: bind
+          source: /home/red/external-drives/Storage/Manga
+          target: /data/Manga
+      ports:
+        - $KOMGA_PORT:25600
+      user: $PUID:$PGID
+      environment:
+        - TZ=$TIMEZONE
+      restart: unless-stopped
+      deploy:
+        resources:
+          limits:
+            memory: $KOMGA_MEMORY
+
+
+volumes:
+  komga_config:
+  komga_data:

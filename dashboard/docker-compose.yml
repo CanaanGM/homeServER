@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - 3000:3000
+    env_file: 
+      - .env
+    volumes:
+      - ./homepage:/app/config 
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods #TODO: look this up
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+
+
+volumes:
+  homepage:

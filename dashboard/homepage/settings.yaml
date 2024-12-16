@@ -1,0 +1,13 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings
+
+title: Home server
+
+providers:
+  - weatherapi:
+      latitude: 31.9544
+      longitude: 35.9106
+      provider: weatherapi
+
+

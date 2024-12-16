@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  navidrome:
+    container_name: navidrome
+    image: deluan/navidrome:latest
+    user: $PUID:$PGID # should be owner of volumes
+    ports:
+      - $NAVIDROME_PORT:4533
+    restart: no
+    environment:
+      # Optional: put your config options customization here. Examples:
+      ND_SCANSCHEDULE: 24h
+      ND_LOGLEVEL: info
+      ND_SESSIONTIMEOUT: 24h
+      ND_BASEURL: ""
+    volumes:
+      - "./navidrome-data:/data"
+      - "/home/red/external-drives/Music/nyasic:/music:ro"
+    deploy:
+      resources:
+        limits:
+          memory: $NAVIDROME_MEMORY
+    env_file:
+      - .env
+      
+volumes:
+  navidrome-data:
