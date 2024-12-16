@@ -16,6 +16,7 @@
 - adjust the PORTS and RAM in `.env` file of the service u wanna run
 - get your user and group info and replace them for `PUID` & `PGID`
 - run `docker compose up -d ` inside the service u want
+- get the HDDS you have, mount them onto folders and replace the paths in the relevant `docker-compose.yml`
 
 
 ### Services
